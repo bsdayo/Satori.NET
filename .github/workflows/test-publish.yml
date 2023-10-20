@@ -36,7 +36,6 @@ jobs:
           dotnet-version: 6.x.x
 
       - name: Publish Satori.Protocol
-        id: publish-core
         uses: alirezanet/publish-nuget@v3.1.0
         with:
           PROJECT_FILE_PATH: src/Satori.Protocol/Satori.Protocol.csproj
@@ -44,7 +43,6 @@ jobs:
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
       - name: Publish Satori.Client
-        id: publish-core
         uses: alirezanet/publish-nuget@v3.1.0
         with:
           PROJECT_FILE_PATH: src/Satori.Client/Satori.Client.csproj
