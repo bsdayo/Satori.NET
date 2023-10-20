@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <Title>Satori.Protocol</Title>
+        <Version>1.0.0-alpha.1</Version>
         <Description>Model definitions for Satori Protocol v1.</Description>
-        <PackageVersion>1.0.0</PackageVersion>
         <Authors>bsdayo</Authors>
     </PropertyGroup>
 
@@ -11,7 +11,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        
+
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <!-- TODO: 补全文档 -->
         <NoWarn>CS1591</NoWarn>

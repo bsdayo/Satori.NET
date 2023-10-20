@@ -1,6 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Title>Satori.Client</Title>
+        <Version>1.0.0-alpha.1</Version>
+        <Description>Client library for Satori Protocol v1.</Description>
+        <Authors>bsdayo</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
