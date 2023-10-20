@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satori.Protocol", "src\Satori.Protocol\Satori.Protocol.csproj", "{F31CA6CA-D92D-4F56-A0F5-3EF3B397459A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satori.Client", "src\Satori.Client\Satori.Client.csproj", "{C0C3776B-E20A-4958-BE49-5017A603700E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satori.Protocol.Tests", "tests\Satori.Protocol.Tests\Satori.Protocol.Tests.csproj", "{CA07B541-08AD-44DC-9D85-766A33C1629E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{F6685640-9F2C-4B68-A4F5-47630BBA601B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satori.Client.Example", "examples\Satori.Client.Example\Satori.Client.Example.csproj", "{800A06B4-6602-42A2-8BE3-FD5DBC43CE0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F31CA6CA-D92D-4F56-A0F5-3EF3B397459A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31CA6CA-D92D-4F56-A0F5-3EF3B397459A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31CA6CA-D92D-4F56-A0F5-3EF3B397459A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31CA6CA-D92D-4F56-A0F5-3EF3B397459A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C3776B-E20A-4958-BE49-5017A603700E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C3776B-E20A-4958-BE49-5017A603700E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C3776B-E20A-4958-BE49-5017A603700E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C3776B-E20A-4958-BE49-5017A603700E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA07B541-08AD-44DC-9D85-766A33C1629E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA07B541-08AD-44DC-9D85-766A33C1629E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA07B541-08AD-44DC-9D85-766A33C1629E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA07B541-08AD-44DC-9D85-766A33C1629E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{800A06B4-6602-42A2-8BE3-FD5DBC43CE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{800A06B4-6602-42A2-8BE3-FD5DBC43CE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{800A06B4-6602-42A2-8BE3-FD5DBC43CE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{800A06B4-6602-42A2-8BE3-FD5DBC43CE0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
