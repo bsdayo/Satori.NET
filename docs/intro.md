@@ -1,13 +1,4 @@
-﻿<div align="center">
-
-![Satori.NET](./assets/banner.png)
-
-[Satori 协议](https://satori.js.org/zh-CN/) .NET SDK
-
-![Satori Protocol Version](https://img.shields.io/badge/Satori_Protocol-v1-8d80e6)
-![.NET Version](https://img.shields.io/badge/.NET-6-512bd4)
-
-</div>
+![Satori.NET](/banner.png)
 
 ## Satori.Protocol
 
