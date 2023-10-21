@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using System.Xml;
+using HtmlAgilityPack;
 
 namespace Satori.Protocol.Elements;
 
@@ -40,6 +40,63 @@ public static partial class ElementSerializer
         return map;
     }
 
+    /// <summary>
+    /// 递归调用
+    /// </summary>
+    /// <param name="parent"></param>
+    /// <param name="map"></param>
+    /// <param name="node"></param>
+    private static void AddChildElements(IList<Element> parent, IDictionary<string, Type> map, HtmlNode node)
+    {
+        Element? element = null;
+
+        switch (node.NodeType)
+        {
+            // 纯文本直接为 TextElement
+            case HtmlNodeType.Text:
+                element = new TextElement { Text = node.InnerText };
+                break;
+
+            case HtmlNodeType.Element:
+                if (map.TryGetValue(node.Name, out var type))
+                {
+                    element = (Element)Activator.CreateInstance(type)!;
+                    foreach (var attr in node.Attributes)
+                    {
+                        element.Attributes[attr.Name] = attr.Value;
+                        var propName = ConvertKebabToPascal(attr.Name);
+                        var prop = type.GetProperty(propName);
+                        if (prop is null) continue;
+
+                        object? value;
+                        // 对于一个 HTML Boolean Attributes，只要出现了就直接设为 true
+                        if (prop.PropertyType == typeof(bool?) || prop.PropertyType == typeof(bool))
+                            value = true;
+                        else
+                            value = TypeDescriptor.GetConverter(prop.PropertyType).ConvertFromString(attr.Value);
+                        prop.SetValue(element, value);
+                    }
+                }
+                else
+                {
+                    element = new Element();
+                    foreach (var attrObj in node.Attributes)
+                    {
+                        var attr = (HtmlAttribute)attrObj;
+                        element.Attributes[attr.Name] = attr.Value;
+                    }
+                }
+
+                foreach (var childNode in node.ChildNodes)
+                    AddChildElements(element.ChildElements, map, childNode);
+
+                break;
+        }
+
+        if (element is not null)
+            parent.Add(element);
+    }
+
     public static IEnumerable<Element> Deserialize(string content, IDictionary<string, Type>? externalElementMap = null)
     {
         _builtinElementMap ??= GetBuiltinElementMap();
@@ -48,55 +105,12 @@ public static partial class ElementSerializer
             ? new Dictionary<string, Type>(_builtinElementMap.Concat(externalElementMap))
             : _builtinElementMap;
 
-        const string wrapperTagName = "satori-message-wrapper";
-        var wrapped = $"<{wrapperTagName}>{content}</{wrapperTagName}>";
-
-        var document = new XmlDocument();
-        document.Load(wrapped);
-        var root = document.ChildNodes[0]!;
+        var document = new HtmlDocument();
+        document.LoadHtml(content);
 
         var list = new List<Element>();
 
-        foreach (var xmlNodeObj in root.ChildNodes)
-        {
-            var xmlNode = (XmlElement)xmlNodeObj!;
-
-            switch (xmlNode.NodeType)
-            {
-                case XmlNodeType.Text:
-                    list.Add(new TextElement { Text = xmlNode.InnerText });
-                    break;
-
-                case XmlNodeType.Element:
-                    Element element;
-                    if (map.TryGetValue(xmlNode.Name, out var type))
-                    {
-                        element = (Element)Activator.CreateInstance(type)!;
-                        foreach (var attrObj in xmlNode.Attributes)
-                        {
-                            var attr = (XmlAttribute)attrObj;
-                            element.Attributes[attr.Name] = attr.Value;
-                            var propName = ConvertKebabToPascal(attr.Name);
-                            var prop = type.GetProperty(propName);
-                            if (prop is null) continue;
-                            var value = TypeDescriptor.GetConverter(prop.PropertyType).ConvertFromString(attr.Value);
-                            prop.SetValue(element, value);
-                        }
-                    }
-                    else
-                    {
-                        element = new Element();
-                        foreach (var attrObj in xmlNode.Attributes)
-                        {
-                            var attr = (XmlAttribute)attrObj;
-                            element.Attributes[attr.Name] = attr.Value;
-                        }
-                    }
-
-                    list.Add(element);
-                    break;
-            }
-        }
+        foreach (var htmlNode in document.DocumentNode.ChildNodes) AddChildElements(list, map, htmlNode);
 
         return list;
     }

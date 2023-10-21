@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Xml;
+using HtmlAgilityPack;
 
 namespace Satori.Protocol.Elements;
 
@@ -8,7 +9,7 @@ public static partial class ElementSerializer
     private static readonly string[] ElementPropertyNames =
         typeof(Element).GetProperties().Select(elementProp => elementProp.Name).ToArray();
 
-    private static XmlNode GetXmlNode(XmlDocument document, Element element)
+    private static HtmlNode GetHtmlNode(HtmlDocument document, Element element)
     {
         if (element is TextElement te)
             return document.CreateTextNode(te.Text);
@@ -16,7 +17,7 @@ public static partial class ElementSerializer
         if (element.TagName is null)
             throw ElementException.TagNameIsNull(element.GetType());
 
-        var xmlElement = document.CreateElement(element.TagName);
+        var htmlElement = document.CreateElement(element.TagName);
 
         var props = element.GetType().GetProperties();
 
@@ -30,13 +31,13 @@ public static partial class ElementSerializer
 
             var attrName = ConvertPascalToKebab(prop.Name);
 
-            xmlElement.SetAttribute(attrName, attrVal.ToString());
+            htmlElement.SetAttributeValue(attrName, attrVal.ToString());
         }
 
-        return xmlElement;
+        return htmlElement;
     }
 
-    private static string WriteXmlNode(XmlNode node)
+    private static string WriteHtmlNode(HtmlNode node)
     {
         using var strWriter = new StringWriter();
         using var xmlWriter = XmlWriter.Create(strWriter, new XmlWriterSettings
@@ -53,28 +54,28 @@ public static partial class ElementSerializer
 
     public static string Serialize(Element element)
     {
-        var document = new XmlDocument();
-        var xmlNode = GetXmlNode(document, element);
+        var document = new HtmlDocument();
+        var htmlNode = GetHtmlNode(document, element);
 
         foreach (var childElement in element.ChildElements)
-            xmlNode.AppendChild(GetXmlNode(document, childElement));
+            htmlNode.AppendChild(GetHtmlNode(document, childElement));
 
-        return WriteXmlNode(xmlNode);
+        return WriteHtmlNode(htmlNode);
     }
 
     public static string Serialize(Element[] elements)
     {
-        var document = new XmlDocument();
+        var document = new HtmlDocument();
         var sb = new StringBuilder();
 
         foreach (var element in elements)
         {
-            var xmlNode = GetXmlNode(document, element);
+            var xmlNode = GetHtmlNode(document, element);
 
             foreach (var childElement in element.ChildElements)
-                xmlNode.AppendChild(GetXmlNode(document, childElement));
+                xmlNode.AppendChild(GetHtmlNode(document, childElement));
 
-            sb.Append(WriteXmlNode(xmlNode));
+            sb.Append(WriteHtmlNode(xmlNode));
         }
 
         return sb.ToString();
