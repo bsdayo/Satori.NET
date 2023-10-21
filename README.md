@@ -7,6 +7,8 @@
 ![Satori Protocol Version](https://img.shields.io/badge/Satori_Protocol-v1-8d80e6)
 ![.NET Version](https://img.shields.io/badge/.NET-6-512bd4)
 
+**[API 文档](https://docs.bsdayo.moe/Satori.NET/)**
+
 </div>
 
 ## Satori.Protocol
