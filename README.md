@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
-![Satori.NET](./assets/logo.png)
+![Satori.NET](./assets/banner.png)
 
 [Satori 协议](https://satori.js.org/zh-CN/) .NET SDK
 
