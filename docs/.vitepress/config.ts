@@ -6,7 +6,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'Satori.NET',
   description: 'Satori 协议 .NET SDK',
-  base: '/satori-net/',
+  base: '/Satori.NET/',
 
   themeConfig: {
     sidebar: {
@@ -15,6 +15,6 @@ export default defineConfig({
     nav: [
       { text: '主页', link: '/' },
       { text: 'API', link: '/api/' },
-    ]
+    ],
   },
 })
