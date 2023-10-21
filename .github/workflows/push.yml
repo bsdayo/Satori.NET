@@ -81,6 +81,9 @@ jobs:
       - name: Generate API documentation
         run: docfx
 
+      - name: Change to docs directory
+        run: cd docs
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
