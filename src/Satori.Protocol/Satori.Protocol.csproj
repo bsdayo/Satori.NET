@@ -2,9 +2,10 @@
 
     <PropertyGroup>
         <Title>Satori.Protocol</Title>
-        <Version>1.0.0-alpha.2</Version>
+        <Version>1.0.0-alpha.3</Version>
         <Description>Model definitions for Satori Protocol v1.</Description>
         <Authors>bsdayo</Authors>
+        <PackageIcon>logo.png</PackageIcon>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -18,7 +19,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.54"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../assets/logo.png" Pack="true" PackagePath="/"/>
     </ItemGroup>
 
 </Project>
