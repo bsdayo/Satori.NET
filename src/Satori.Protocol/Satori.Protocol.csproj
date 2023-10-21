@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <Title>Satori.Protocol</Title>
-        <Version>1.0.0-alpha.1</Version>
+        <Version>1.0.0-alpha.2</Version>
         <Description>Model definitions for Satori Protocol v1.</Description>
         <Authors>bsdayo</Authors>
     </PropertyGroup>

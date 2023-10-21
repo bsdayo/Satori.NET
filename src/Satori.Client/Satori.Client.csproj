@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <Title>Satori.Client</Title>
-        <Version>1.0.0-alpha.1</Version>
+        <Version>1.0.0-alpha.2</Version>
         <Description>Client library for Satori Protocol v1.</Description>
         <Authors>bsdayo</Authors>
     </PropertyGroup>
