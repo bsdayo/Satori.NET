@@ -6,3 +6,9 @@ riderModule.iml
 .idea/
 .vscode/
 *.user
+
+node_modules/
+docs/.vitepress/cache
+docs/.vitepress/dist
+docs/api/*.md
+docs/!api/index.md
