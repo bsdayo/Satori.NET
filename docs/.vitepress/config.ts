@@ -16,5 +16,8 @@ export default defineConfig({
       { text: '主页', link: '/' },
       { text: 'API', link: '/api/' },
     ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/bsdayo/Satori.NET' },
+    ],
   },
 })
