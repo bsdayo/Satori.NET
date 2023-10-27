@@ -7,8 +7,8 @@ hero:
 #   tagline: Lorem ipsum...
   actions:
     - theme: brand
-      text: 介绍
-      link: /intro.md
+      text: 指南
+      link: /guide/
     - theme: alt
       text: API 文档
       link: /api/

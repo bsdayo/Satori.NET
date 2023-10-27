@@ -10,11 +10,20 @@ export default defineConfig({
 
   themeConfig: {
     sidebar: {
-      '/api/': [{ text: 'API Reference', items: getApiSidebar() }],
+      '/guide/': [
+        {
+          text: '指南',
+          items: [
+            { text: '简介', link: '/guide/index.md' },
+            { text: '消息元素', link: '/guide/elements.md' },
+          ],
+        },
+      ],
+      '/api/': [{ text: 'API 参考', items: getApiSidebar() }],
     },
     nav: [
-      { text: '主页', link: '/' },
-      { text: 'API', link: '/api/' },
+      { text: '指南', link: '/guide/' },
+      { text: 'API 参考', link: '/api/' },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/bsdayo/Satori.NET' },
