@@ -5,10 +5,6 @@ on:
     branches:
       - main
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -50,64 +46,3 @@ jobs:
           PROJECT_FILE_PATH: src/Satori.Client/Satori.Client.csproj
           TAG_COMMIT: false
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-
-  # =====
-  # Docs
-  # =====
-
-  docs-build:
-    needs: test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.x.x
-
-      - name: Install docfx
-        run: dotnet tool install -g docfx
-
-      - name: Generate API documentation
-        run: docfx
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: pnpm
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build with VitePress
-        run: pnpm run docs:build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: docs/.vitepress/dist
-
-  docs-deploy:
-    needs: docs-build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
