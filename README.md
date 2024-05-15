@@ -4,10 +4,8 @@
 
 [Satori 协议](https://satori.js.org/zh-CN/) .NET SDK
 
-![Satori Protocol Version](https://img.shields.io/badge/Satori_Protocol-v1-8d80e6)
+![Satori Protocol Version](https://img.shields.io/badge/Satori%20Protocol-v1-8d80e6)
 ![.NET Version](https://img.shields.io/badge/.NET-6-512bd4)
-
-**[使用文档](https://docs.bsdayo.moe/Satori.NET/) | [API 参考](https://docs.bsdayo.moe/Satori.NET/api/)**
 
 </div>
 
