@@ -37,7 +37,7 @@ public class SatoriClient : IDisposable
 
     public Task StartAsync() => EventService.StartAsync();
 
-    public Task StopAsync() => EventService.StartAsync();
+    public Task StopAsync() => EventService.StopAsync();
 
     public void Dispose()
     {
