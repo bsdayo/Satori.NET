@@ -81,6 +81,8 @@ var elements = ElementSerializer.Deserialize(text);
 
 本 SDK 目前虽然基本完成，仍可能遇到些许小问题，如果遇到可以发布 [Issue](https://github.com/bsdayo/Satori.NET/issues/)。
 
+欢迎 PR！
+
 ## 开源
 
 [MIT License](https://github.com/bsdayo/Satori.NET/blob/main/LICENSE)

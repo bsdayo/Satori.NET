@@ -1,0 +1,16 @@
+﻿<Project>
+    <PropertyGroup>
+        <Version>1.0.0-alpha.4</Version>
+        <Authors>bsdayo</Authors>
+        <PackageTags>satori;satorijs;bot</PackageTags>
+        <RepositoryUrl>https://github.com/bsdayo/Satori.NET</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+</Project>

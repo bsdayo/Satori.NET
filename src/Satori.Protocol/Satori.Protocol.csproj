@@ -2,16 +2,8 @@
 
     <PropertyGroup>
         <Title>Satori.Protocol</Title>
-        <Version>1.0.0-alpha.3</Version>
         <Description>Model definitions for Satori Protocol v1.</Description>
-        <Authors>bsdayo</Authors>
         <PackageIcon>logo.png</PackageIcon>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
 
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <!-- TODO: 补全文档 -->
@@ -19,11 +11,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.54"/>
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="../../assets/logo.png" Pack="true" PackagePath="/"/>
+        <None Include="../../assets/logo.png" Pack="true" PackagePath="/" />
     </ItemGroup>
 
 </Project>
